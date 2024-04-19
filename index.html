@@ -53,7 +53,7 @@ function clearOutputResetOnce() {
 }
 function checkACookieExists() {
   if (
-    document.cookie.split(";").some((item) => item.trim().startsWith("user="))
+    document.cookie.split(";").some((item) => item.trim().startsWith("user"))
   ) {
     const output = document.getElementById("a-cookie-existence");
     output.textContent = '> The cookie "user" exists';
@@ -77,7 +77,6 @@ function clearOutputACookieExists() {
         <button type="button" class="btn btn-secondary" onclick="clearOutputResetOnce()">Clear Reset</button>
         <button type="button" class="btn btn-secondary" checkACookieExists()>Check a cookie exists</button>
         <button type="button" class="btn btn-secondary" onclick="clearOutputACookieExists()">Clear cookie existance</button>
-
     </header>   
 </body>
 </html>
