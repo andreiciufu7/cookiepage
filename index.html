@@ -57,11 +57,13 @@ function checkACookieExists() {
   ) {
     const output = document.getElementById("a-cookie-existence");
     output.textContent = '> The cookie "user" exists';
+    console.log(message);
   }
 }
 function clearOutputACookieExists() {
   const output = document.getElementById("a-cookie-existence");
   output.textContent = "";
+  console.log("Output cleared.");
 } 
 </script>
 
