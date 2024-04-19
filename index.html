@@ -39,7 +39,9 @@
     document.cookie = cookieString;
     document.getElementById("message-display").textContent = "Cookie '" + name + "' set successfully.";
     }
-
+    function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+}
     function getCookie(name) {
     var nameEQ = name + "=";
     var cookies = document.cookie.split(';');
@@ -92,6 +94,7 @@
         <button type="button" class="btn btn-secondary" onclick="clearASpecificValueOfTheCookie()">Clear check specific value</button>
         <button type="button" class="btn btn-secondary" onclick="getSampleCookieValue()">Get sample cookie</button>
         <button type="button" class="btn btn-secondary" onclick="clearOutputCookieValue()">clear output sample cookie</button>
+        <button type="button" class="btn btn-secondary" onclick="deleteCookie('location')">clear sample cookie</button>
         <div id="message-display" style="margin-top: 20px;"></div>
     </header>
 </body>
