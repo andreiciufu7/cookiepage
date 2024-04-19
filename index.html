@@ -16,6 +16,22 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
 <script>
+    document.cookie = "test1; xoxo; Secure";
+    document.cookie = "test2; xdxd; Secure";
+
+    const cookieValue = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("test2="))
+    ?.split("=")[1];
+
+    function getSampleCookieValue() {
+    const output = document.getElementById("message-display");
+    output.textContent = `> ${cookieValue}`;
+    }
+    function clearOutputCookieValue() {
+    const output = document.getElementById("message-display");
+    output.textContent = "";
+    }
    function setCookie(name, value) {
     var cookieString = name + "=" + encodeURIComponent(value) + "; path=/";
     document.cookie = cookieString;
@@ -89,6 +105,8 @@ function clearASpecificValueOfTheCookie() {
         <button type="button" class="btn btn-secondary" onclick="clearOutputACookieExists()">Clear output cookie exists</button>
         <button type="button" class="btn btn-secondary" onclick="checkCookieHasASpecificValue()">Check specific value</button>
         <button type="button" class="btn btn-secondary" onclick="clearASpecificValueOfTheCookie()">Clear check specific value</button>
+        <button type="button" class="btn btn-secondary" onclick="getSampleCookieValue()">Get sample cookie</button>
+        <button type="button" class="btn btn-secondary" onclick="clearOutputCookieValue()">clear output sample cookie</button>
 
         <div id="message-display" style="margin-top: 20px;"></div>
     </header>
