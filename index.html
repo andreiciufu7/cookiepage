@@ -19,6 +19,7 @@
    function setCookie(name, value) {
     var cookieString = name + "=" + encodeURIComponent(value) + "; path=/";
     document.cookie = cookieString;
+    document.getElementById("message-display").textContent = "Cookie '" + name + "' set successfully.";
     }
 
     function getCookie(name) {
@@ -34,7 +35,8 @@
     }
     function deleteCookie(name) {
     document.cookie = name + "=; Max-Age=0; path=/";
-}
+    document.getElementById("message-display").textContent = "Cookie '" + name + "' deleted successfully.";
+    }
 function resetOnce() {
   // Note that we are setting `SameSite=None;` in this example because the example
   // needs to work cross-origin.
@@ -52,14 +54,11 @@ function clearOutputResetOnce() {
   output.textContent = "";
 }
 function checkACookieExists() {
-  if (document.cookie.split(";").some((item) => item.trim().startsWith("user="))) {
-    const output = document.getElementById("a-cookie-existence");
-    const message = '> The cookie "user" exists';
-    output.textContent = message;
-    console.log(message);  // Log to console
-  } else {
-    console.log('The cookie "user" does not exist.');  // Log non-existence to console
-  }
+    if (document.cookie.split(";").some((item) => item.trim().startsWith("user="))) {
+        document.getElementById("message-display").textContent = '> The cookie "user" exists';
+    } else {
+        document.getElementById("message-display").textContent = '> No cookie "user" found';
+    }
 }
 
 function clearOutputACookieExists() {
@@ -77,10 +76,8 @@ function clearOutputACookieExists() {
         <button type="button" class="btn btn-primary" onclick="setCookie('user', 'JaneDoe')">Set Cookie</button>
         <button type="button" class="btn btn-secondary" onclick="alert(getCookie('user'))">Show Cookie</button>
         <button type="button" class="btn btn-secondary" onclick="deleteCookie('user')">Delete Cookie</button>
-        <button type="button" class="btn btn-secondary" onclick="resetOnce()">Reset cookie</button>
-        <button type="button" class="btn btn-secondary" onclick="clearOutputResetOnce()">Clear Reset</button>
         <button type="button" class="btn btn-secondary" onclick="checkACookieExists()">Check a cookie exists</button>
-        <button type="button" class="btn btn-secondary" onclick="clearOutputACookieExists()">Clear cookie existance</button>
-    </header>   
+        <div id="message-display" style="margin-top: 20px;"></div>
+    </header>
 </body>
 </html>
