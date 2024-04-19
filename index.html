@@ -35,8 +35,34 @@
     function deleteCookie(name) {
     document.cookie = name + "=; Max-Age=0; path=/";
 }
+function resetOnce() {
+  // Note that we are setting `SameSite=None;` in this example because the example
+  // needs to work cross-origin.
+  // It is more common not to set the `SameSite` attribute, which results in the default,
+  // and more secure, value of `SameSite=Lax;`
+  document.cookie =
+    "doSomethingOnlyOnce=; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure";
 
-  
+  const output = document.getElementById("reset-once");
+  output.textContent = "> Reset!";
+}
+
+function clearOutputResetOnce() {
+  const output = document.getElementById("reset-once");
+  output.textContent = "";
+}
+function checkACookieExists() {
+  if (
+    document.cookie.split(";").some((item) => item.trim().startsWith("user="))
+  ) {
+    const output = document.getElementById("a-cookie-existence");
+    output.textContent = '> The cookie "user" exists';
+  }
+}
+function clearOutputACookieExists() {
+  const output = document.getElementById("a-cookie-existence");
+  output.textContent = "";
+} 
 </script>
 
 </head>
@@ -47,6 +73,10 @@
         <button type="button" class="btn btn-primary" onclick="setCookie('user', 'JaneDoe')">Set Cookie</button>
         <button type="button" class="btn btn-secondary" onclick="alert(getCookie('user'))">Show Cookie</button>
         <button type="button" class="btn btn-secondary" onclick="deleteCookie('user')">Delete Cookie</button>
+        <button type="button" class="btn btn-secondary" onclick="resetOnce()">Reset cookie</button>
+        <button type="button" class="btn btn-secondary" onclick="clearOutputResetOnce()">Clear Reset</button>
+        <button type="button" class="btn btn-secondary" checkACookieExists()>Check a cookie exists</button>
+        <button type="button" class="btn btn-secondary" onclick="clearOutputACookieExists()">Clear cookie existance</button>
 
     </header>   
 </body>
