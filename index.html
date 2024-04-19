@@ -62,10 +62,19 @@ function checkACookieExists() {
 }
 
 function clearOutputACookieExists() {
-  const output = document.getElementById("a-cookie-existence");
+  const output = document.getElementById("message-display");
   output.textContent = "";
-  console.log("Output cleared.");
-} 
+}
+function checkCookieHasASpecificValue() {
+  if (document.cookie.split(";").some((item) => item.includes("JaneDoe"))) {
+    const output = document.getElementById("message-display");
+    document.getElementById("message-display").textContent = '> The cookie "user" has a value of JaneDoe"';
+  }
+}
+function clearASpecificValueOfTheCookie() {
+  const output = document.getElementById("message-display");
+  output.textContent = "";
+}
 </script>
 
 </head>
@@ -77,6 +86,10 @@ function clearOutputACookieExists() {
         <button type="button" class="btn btn-secondary" onclick="alert(getCookie('user'))">Show Cookie</button>
         <button type="button" class="btn btn-secondary" onclick="deleteCookie('user')">Delete Cookie</button>
         <button type="button" class="btn btn-secondary" onclick="checkACookieExists()">Check a cookie exists</button>
+        <button type="button" class="btn btn-secondary" onclick="clearOutputACookieExists()">Clear output cookie exists</button>
+        <button type="button" class="btn btn-secondary" onclick="checkCookieHasASpecificValue()">Check specific value</button>
+        <button type="button" class="btn btn-secondary" onclick="clearASpecificValueOfTheCookie()">Clear check specific value</button>
+
         <div id="message-display" style="margin-top: 20px;"></div>
     </header>
 </body>
