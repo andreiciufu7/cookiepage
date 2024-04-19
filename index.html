@@ -55,28 +55,27 @@
     document.cookie = name + "=; Max-Age=0; path=/";
     document.getElementById("message-display").textContent = "Cookie '" + name + "' deleted successfully.";
     }
-function checkACookieExists() {
-    if (document.cookie.split(";").some((item) => item.trim().startsWith("user="))) {
-        document.getElementById("message-display").textContent = '> The cookie "user" exists';
-    } else {
-        document.getElementById("message-display").textContent = '> No cookie "user" found';
+    function checkACookieExists() {
+        if (document.cookie.split(";").some((item) => item.trim().startsWith("user="))) {
+            document.getElementById("message-display").textContent = '> The cookie "user" exists';
+        } else {
+            document.getElementById("message-display").textContent = '> No cookie "user" found';
+        }
     }
-}
-
-function clearOutputACookieExists() {
-  const output = document.getElementById("message-display");
-  output.textContent = "";
-}
-function checkCookieHasASpecificValue() {
-  if (document.cookie.split(";").some((item) => item.includes("JaneDoe"))) {
-    const output = document.getElementById("message-display");
-    document.getElementById("message-display").textContent = '> The cookie "user" has a value of JaneDoe"';
-  }
-}
-function clearASpecificValueOfTheCookie() {
-  const output = document.getElementById("message-display");
-  output.textContent = "";
-}
+    function clearOutputACookieExists() {
+        const output = document.getElementById("message-display");
+        output.textContent = "";
+    }
+    function checkCookieHasASpecificValue() {
+        if (document.cookie.split(";").some((item) => item.includes("JaneDoe"))) {
+            const output = document.getElementById("message-display");
+            document.getElementById("message-display").textContent = '> The cookie "user" has a value of JaneDoe"';
+        }
+    }
+    function clearASpecificValueOfTheCookie() {
+        const output = document.getElementById("message-display");
+        output.textContent = "";
+    }
 </script>
 
 </head>
@@ -93,7 +92,6 @@ function clearASpecificValueOfTheCookie() {
         <button type="button" class="btn btn-secondary" onclick="clearASpecificValueOfTheCookie()">Clear check specific value</button>
         <button type="button" class="btn btn-secondary" onclick="getSampleCookieValue()">Get sample cookie</button>
         <button type="button" class="btn btn-secondary" onclick="clearOutputCookieValue()">clear output sample cookie</button>
-
         <div id="message-display" style="margin-top: 20px;"></div>
     </header>
 </body>
